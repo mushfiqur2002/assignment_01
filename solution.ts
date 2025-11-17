@@ -128,18 +128,17 @@ const calculateTotalPrice = (arr: IProduct[]) => {
     let totalPrice = 0
     arr.map((item) => {
         // totalPrice += (item.price * item.quantity) * (item.discount / 100)
-        let productPrice
-        let productPriceWithDiscount
-        item.discount ?
-            totalPrice += ((item.price * item.quantity) - ((item.price * item.quantity) * (item.discount / 100))) :
-            totalPrice += (item.price * item.quantity)
+        let basePrice = item.price * item.quantity
+        let finalPrice = item.discount ? basePrice - (basePrice * (item.discount / 100)) : basePrice
+        totalPrice += finalPrice
     })
     return totalPrice
 }
 const products: IProduct[] = [
-    { name: 'Pen', price: 10, quantity: 2 },
-    { name: 'Notebook', price: 25, quantity: 3, discount: 10 },
-    { name: 'Bag', price: 50, quantity: 1, discount: 20 },
+        { name: 'Pen', price: 10, quantity: 2 },
+        { name: 'Notebook', price: 25, quantity: 3, discount: 10 },
+        { name: 'Bag', price: 50, quantity: 1, discount: 20 },
 ];
 
 console.log(calculateTotalPrice(products));
+// console.log(calculateTotalPrice(products));
