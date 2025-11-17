@@ -80,7 +80,9 @@ Example :
     ```
 
 এখানে UserKeys type গুলো Union type মতো থাকে 'name' | 'age' | 'isAdult'
+    ```ts
     let key : UserKeys
     key = 'name' // allow
     key = 'age' // allow
     key = 'address' // wrong
+    ```
